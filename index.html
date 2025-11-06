@@ -1,177 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFD</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MFD</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    /* Fondo general (El que tenías en tu código) */
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-      background: 
-        linear-gradient(180deg, rgba(60, 0, 15, 0.9), rgba(110, 0, 35, 0.95)),
-        url('https://images.unsplash.com/photo-1529243856184-fd5465488984?auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
+    /* Fondo general */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: 
+        linear-gradient(180deg, rgba(60, 0, 15, 0.9), rgba(110, 0, 35, 0.95)),
+        url('https://images.unsplash.com/photo-1529243856184-fd5465488984?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
 
-    /* Tarjeta central (MODIFICADA para ser oscura) */
-    .card {
-      /* background: rgba(255, 255, 255, 0.8); */ /* <- Color anterior */
-      background: rgba(60, 30, 45, 0.85); /* <- NUEVO color oscuro transparente */
-      backdrop-filter: blur(8px);
-      border-radius: 18px;
-      padding: 45px 40px;
-      text-align: center;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-      width: 340px;
-      animation: fadeIn 0.8s ease-in-out;
-      transition: all 0.3s ease;
-      /* Línea opcional para un borde sutil como en la imagen */
-      border: 1px solid rgba(255, 255, 255, 0.1); 
-    }
+    /* Tarjeta central */
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      padding: 45px 40px;
+      text-align: center;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+      width: 340px;
+      animation: fadeIn 0.8s ease-in-out;
+      transition: all 0.3s ease;
+    }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(25px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(25px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
 
-    /* Títulos (MODIFICADOS para ser blancos) */
-    .title {
-      font-size: 2.3em;
-      /* color: #8B0000; */ /* <- Color anterior */
-      color: #FFFFFF; /* <- NUEVO color */
-      margin-bottom: 5px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+    .title {
+      font-size: 2.3em;
+      color: #8B0000;
+      margin-bottom: 5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
 
-    .subtitle {
-      /* color: #000; */ /* <- Color anterior */
-      color: #f0f0f0; /* <- NUEVO color */
-      font-size: 1.1em;
-      margin-bottom: 35px;
-      font-weight: 500;
-    }
+    .subtitle {
+      color: #000;
+      font-size: 1.1em;
+      margin-bottom: 35px;
+      font-weight: 500;
+    }
 
-    /* Botones principales (MODIFICADOS) */
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 12px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1em;
-      color: #fff;
-      /* background: #8B0000; */ /* <- Color anterior */
-      background: rgba(122, 73, 95, 0.8); /* <- NUEVO color de la imagen */
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      box-sizing: border-box; /* <- AÑADIDO para arreglar anchura */
-    }
+    /* Botones principales */
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      color: #fff;
+      background: #8B0000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
 
-    button:hover {
-      /* background: #a00000; */ /* <- Color anterior */
-      background: rgba(140, 90, 110, 0.9); /* <- NUEVO color hover */
-      transform: scale(1.03);
-    }
+    button:hover {
+      background: #a00000;
+      transform: scale(1.03);
+    }
 
-    /* Campos de texto (MODIFICADOS) */
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 12px;
-      /* border: 1px solid #bbb; */ /* <- Borde anterior */
-      border: none; /* <- NUEVO (sin borde) */
-      border-radius: 10px;
-      outline: none;
-      font-size: 1em; /* <- Ajustado a 1em como el botón */
-      text-align: center;
-      /* color: #333; */ /* <- Color anterior */
-      color: #FFFFFF; /* <- NUEVO color de texto */
-      /* background: rgba(255, 255, 255, 0.7); */ /* <- Color anterior */
-      background: rgba(122, 73, 95, 0.8); /* <- NUEVO (igual al botón) */
-      font-weight: 500; /* <- Añadido para AÑADIDO para ser igual al botón */
-      box-sizing: border-box; /* <- AÑADIDO (LA CLAVE para que no se extienda) */
-    }
+    /* Campos de texto */
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: 1px solid #bbb;
+      border-radius: 10px;
+      outline: none;
+      font-size: 0.95em;
+      text-align: center;
+      color: #333;
+      background: rgba(255, 255, 255, 0.7);
+    }
 
-    /* Placeholder (MODIFICADO) */
-    input::placeholder {
-      /* color: #777; */ /* <- Color anterior */
-      color: rgba(255, 255, 255, 0.8); /* <- NUEVO color de placeholder */
-    }
+    input::placeholder {
+      color: #777;
+    }
 
-    /* Sección de login (oculta inicialmente) */
-    .hidden {
-      display: none;
-    }
+    /* Sección de login (oculta inicialmente) */
+    .hidden {
+      display: none;
+    }
 
-    /* Footer (MODIFICADO) */
-    .footer {
-      font-size: 0.8em;
-      margin-top: 25px;
-      /* color: #444; */ /* <- Color anterior */
-      color: #c0c0c0; /* <- NUEVO color */
-    }
+    .footer {
+      font-size: 0.8em;
+      margin-top: 25px;
+      color: #444;
+    }
 
-    /* Responsividad (sin cambios) */
-    @media (max-width: 480px) {
-      .card {
-        width: 85%;
-        padding: 35px 25px;
-      }
-      .title {
-        font-size: 1.9em;
-      }
-    }
-  </style>
+    /* Responsividad */
+    @media (max-width: 480px) {
+      .card {
+        width: 85%;
+        padding: 35px 25px;
+      }
+      .title {
+        font-size: 1.9em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-    <div class="title">MFD</div>
-    <div class="subtitle">Bienvenido</div>
+  <div class="card">
+    <div class="title">MFD</div>
+    <div class="subtitle">Bienvenido</div>
 
-    <button onclick="showLogin()">Supervisores</button>
-    <button onclick="openReport()">Reporte</button>
+    <button onclick="showLogin()">Supervisores</button>
+    <button onclick="openReport()">Reporte</button>
 
-    <div id="login" class="hidden">
-      <input type="text" id="user" placeholder="Usuario">
-      <input type="password" id="pass" placeholder="Contraseña">
-      <button onclick="checkLogin()">Ingresar</button>
-    </div>
+    <div id="login" class="hidden">
+      <input type="text" id="user" placeholder="Usuario">
+      <input type="password" id="pass" placeholder="Contraseña">
+      <button onclick="checkLogin()">Ingresar</button>
+    </div>
 
-    <div class="footer">© MFD Analítica</div>
-  </div>
+    <div class="footer">© MFD Analítica</div>
+  </div>
 
-    <script>
-    function showLogin() {
-      const login = document.getElementById("login");
-      login.classList.toggle("hidden");
-    }
+  <script>
+    function showLogin() {
+      const login = document.getElementById("login");
+      login.classList.toggle("hidden");
+    }
 
-    function checkLogin() {
-      const user = document.getElementById("user").value.trim();
-      const pass = document.getElementById("pass").value.trim();
+    function checkLogin() {
+      const user = document.getElementById("user").value.trim();
+      const pass = document.getElementById("pass").value.trim();
 
-      if (user === "SupervisionMFD" && pass === "AnaliticaMFD") {
-        window.open("https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec", "_blank");
-      } else {
-        alert("Usuario o contraseña incorrectos ❌");
-      }
-    }
+      if (user === "SupervisionMFD" && pass === "AnaliticaMFD") {
+        window.open("https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec", "_blank");
+      } else {
+        alert("Usuario o contraseña incorrectos ❌");
+      }
+    }
 
-    function openReport() {
-      window.open("https://script.google.com/macros/s/AKfycbx6eFAq7IHjaRC0tBszZviGcfPqsRKnOqza4B5omoth-uAcEuPeRSrI9M4XEPAG7vAdPg/exec", "_blank");
-    }
-  </script>
+    function openReport() {
+      window.open("https://script.google.com/macros/s/AKfycbx6eFAq7IHjaRC0tBszZviGcfPqsRKnOqza4B5omoth-uAcEuPeRSrI9M4XEPAG7vAdPg/exec", "_blank");
+    }
+  </script>
 </body>
 </html>
