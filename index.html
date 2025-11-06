@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MFD</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
     body {
       margin: 0;
-      padding: 0;
       height: 100vh;
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(180deg, #4a001f 0%, #8b0036 50%, #2b0010 100%);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: 
+        linear-gradient(180deg, rgba(40, 0, 15, 0.9), rgba(100, 0, 40, 0.9)),
+        url('https://images.unsplash.com/photo-1529243856184-fd5465488984?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: #fff;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      width: 350px;
-      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      border-radius: 22px;
+      padding: 50px 40px;
       text-align: center;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      width: 360px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     .title {
-      font-size: 2.3em;
-      color: #ffd5d5;
-      margin-bottom: 10px;
+      font-size: 2.5em;
+      color: #ffd9e0;
+      margin-bottom: 5px;
       font-weight: 600;
+      letter-spacing: 1px;
     }
 
     .subtitle {
-      font-size: 1.1em;
       color: #ffb6c1;
-      margin-bottom: 30px;
+      font-size: 1.1em;
+      margin-bottom: 35px;
     }
 
     button {
       width: 100%;
-      padding: 12px;
-      margin-top: 10px;
+      padding: 13px;
+      margin-top: 12px;
       border: none;
       border-radius: 10px;
       font-size: 1em;
-      color: white;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      background: linear-gradient(90deg, #b3003b, #e6005c);
+      transition: 0.3s;
     }
 
     button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 150, 150, 0.5);
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.03);
+    }
+
+    button svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+      opacity: 0.8;
     }
 
     .hidden {
@@ -76,13 +100,13 @@
     }
 
     input::placeholder {
-      color: #ffb6c1;
+      color: #f7c8d0;
     }
 
     .footer {
       font-size: 0.8em;
-      margin-top: 20px;
-      color: #f2b8b8;
+      margin-top: 25px;
+      color: #f5b7c3;
     }
   </style>
 </head>
@@ -91,12 +115,26 @@
     <div class="title">MFD</div>
     <div class="subtitle">Bienvenido</div>
 
-    <button onclick="showLogin()">👔 Supervisores</button>
-    <button onclick="openReport()">📊 Reporte</button>
+    <button onclick="showLogin()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 
+        1.79-4 4 1.79 4 4 4zm0 2c-2.67 
+        0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+      Supervisores
+    </button>
+
+    <button onclick="openReport()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zM3 9h2V7H3v2zm4 
+        8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/>
+      </svg>
+      Reporte
+    </button>
 
     <div id="login" class="hidden">
-      <input type="text" id="user" placeholder="Usuario" />
-      <input type="password" id="pass" placeholder="Contraseña" />
+      <input type="text" id="user" placeholder="Usuario">
+      <input type="password" id="pass" placeholder="Contraseña">
       <button onclick="checkLogin()">Ingresar</button>
     </div>
 
@@ -125,3 +163,4 @@
   </script>
 </body>
 </html>
+
