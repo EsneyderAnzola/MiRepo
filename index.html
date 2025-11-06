@@ -1,11 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MFD Panel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #5a0000 0%, #2b0000 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      color: #ffcccc;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(145deg, #800000, #b22222);
+      border: none;
+      border-radius: 18px;
+      padding: 20px 35px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .auth-box {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #fff3;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      width: 200px;
+      text-align: center;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .auth-buttons button {
+      background: #800000;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <p>This is a paragraph</p>
+  <h1>MFD</h1>
+  <div class="buttons">
+    <button class="btn" id="btnSup">
+      <div class="icon">👔</div>
+      Supervisores
+    </button>
+    <button class="btn" id="btnRep">
+      <div class="icon">📊</div>
+      Reporte
+    </button>
+  </div>
+
+  <div id="authBox" class="auth-box hidden">
+    <input id="user" placeholder="Usuario">
+    <input id="pass" type="password" placeholder="Contraseña">
+    <div class="auth-buttons">
+      <button id="btnLogin">Ingresar</button>
+      <button id="btnCancel">Cancelar</button>
+    </div>
+  </div>
+
+  <script>
+    const AUTH_USER = 'SupervisionMFD';
+    const AUTH_PASS = 'AnaliticaMFD';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec';
+
+    const btnSup = document.getElementById('btnSup');
+    const btnRep = document.getElementById('btnRep');
+    const authBox = document.getElementById('authBox');
+    const inputUser = document.getElementById('user');
+    const inputPass = document.getElementById('pass');
+    const btnLogin = document.getElementById('btnLogin');
+    const btnCancel = document.getElementById('btnCancel');
+
+    btnSup.addEventListener('click', ()=>{
+      authBox.classList.remove('hidden');
+      inputUser.focus();
+    });
+
+    btnCancel.addEventListener('click', ()=>{
+      authBox.classList.add('hidden');
+      inputUser.value = '';
+      inputPass.value = '';
+    });
+
+    btnLogin.addEventListener('click', ()=>{
+      const u = inputUser.value.trim();
+      const p = inputPass.value.trim();
+      if(u === AUTH_USER && p === AUTH_PASS){
+        window.open(SCRIPT_URL, '_blank');
+        authBox.classList.add('hidden');
+        inputUser.value = '';
+        inputPass.value = '';
+      } else {
+        alert('Usuario o contraseña incorrectos');
+      }
+    });
+
+    btnRep.addEventListener('click', ()=>{
+      window.open(SCRIPT_URL, '_blank');
+    });
+  </script>
 </body>
 </html>
