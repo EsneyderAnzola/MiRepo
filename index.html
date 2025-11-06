@@ -1,114 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MFD</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       height: 100vh;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(160deg, #4a0000, #800020);
+      background: linear-gradient(180deg, #4a001f 0%, #8b0036 50%, #2b0010 100%);
       display: flex;
-      justify-content: center;
       align-items: center;
-      color: white;
+      justify-content: center;
+      color: #fff;
     }
 
-    .container {
+    .card {
       background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 40px;
+      backdrop-filter: blur(12px);
       border-radius: 20px;
-      width: 320px;
+      width: 350px;
+      padding: 40px 30px;
       text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
     }
 
-    h1 {
-      font-size: 2em;
+    .title {
+      font-size: 2.3em;
+      color: #ffd5d5;
       margin-bottom: 10px;
-      color: #ffcccc;
+      font-weight: 600;
     }
 
-    h2 {
-      font-size: 1.2em;
-      color: #f8d7da;
-      margin-bottom: 25px;
+    .subtitle {
+      font-size: 1.1em;
+      color: #ffb6c1;
+      margin-bottom: 30px;
     }
 
     button {
       width: 100%;
-      background-color: #b3003b;
-      border: none;
-      color: white;
       padding: 12px;
-      font-size: 1em;
-      border-radius: 10px;
-      cursor: pointer;
       margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      color: white;
+      cursor: pointer;
       transition: all 0.3s ease;
+      background: linear-gradient(90deg, #b3003b, #e6005c);
     }
 
     button:hover {
-      background-color: #e6005c;
       transform: scale(1.05);
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    input {
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      font-size: 1em;
+      box-shadow: 0 0 15px rgba(255, 150, 150, 0.5);
     }
 
     .hidden {
       display: none;
     }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.95em;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      text-align: center;
+    }
+
+    input::placeholder {
+      color: #ffb6c1;
+    }
+
+    .footer {
+      font-size: 0.8em;
+      margin-top: 20px;
+      color: #f2b8b8;
+    }
   </style>
 </head>
 <body>
-  <div class="container" id="main">
-    <h1>MFD</h1>
-    <h2>Bienvenido</h2>
+  <div class="card">
+    <div class="title">MFD</div>
+    <div class="subtitle">Bienvenido</div>
 
-    <button onclick="showLogin()">Supervisor</button>
-    <button onclick="window.open('https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec','_blank')">
-      Reporte
-    </button>
+    <button onclick="showLogin()">👔 Supervisores</button>
+    <button onclick="openReport()">📊 Reporte</button>
 
-    <div id="loginPanel" class="hidden">
-      <div class="input-group">
-        <input type="text" id="user" placeholder="Usuario">
-        <input type="password" id="pass" placeholder="Contraseña">
-        <button onclick="checkLogin()">Ingresar</button>
-      </div>
+    <div id="login" class="hidden">
+      <input type="text" id="user" placeholder="Usuario" />
+      <input type="password" id="pass" placeholder="Contraseña" />
+      <button onclick="checkLogin()">Ingresar</button>
     </div>
+
+    <div class="footer">© MFD Analítica</div>
   </div>
 
   <script>
     function showLogin() {
-      document.getElementById('loginPanel').classList.toggle('hidden');
+      document.getElementById("login").classList.toggle("hidden");
     }
 
     function checkLogin() {
-      const user = document.getElementById('user').value;
-      const pass = document.getElementById('pass').value;
+      const user = document.getElementById("user").value.trim();
+      const pass = document.getElementById("pass").value.trim();
 
       if (user === "SupervisionMFD" && pass === "AnaliticaMFD") {
         window.open("https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec", "_blank");
       } else {
-        alert("Usuario o contraseña incorrectos");
+        alert("Usuario o contraseña incorrectos ❌");
       }
+    }
+
+    function openReport() {
+      window.open("https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec", "_blank");
     }
   </script>
 </body>
