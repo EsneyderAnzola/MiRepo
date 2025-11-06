@@ -1,159 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFD</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MFD - Panel de Acceso</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-    /* Fondo general */
     body {
       margin: 0;
+      font-family: "Segoe UI", sans-serif;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Poppins', sans-serif;
-      background: 
-        linear-gradient(180deg, rgba(60, 0, 15, 0.9), rgba(110, 0, 35, 0.95)),
-        url('https://images.unsplash.com/photo-1529243856184-fd5465488984?auto=format&fit=crop&w=1600&q=80');
+      background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
     }
 
-    /* Tarjeta central */
     .card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-      border-radius: 18px;
-      padding: 45px 40px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
       text-align: center;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-      width: 340px;
-      animation: fadeIn 0.8s ease-in-out;
+      padding: 40px 25px;
       transition: all 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(25px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .title {
-      font-size: 2.3em;
-      color: #8B0000;
-      margin-bottom: 5px;
+    .card h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      color: #8B0000; /* Vinotinto */
       font-weight: 700;
-      letter-spacing: 1px;
     }
 
-    .subtitle {
+    .card h2 {
+      margin-top: 5px;
+      font-size: 1.2rem;
       color: #000;
-      font-size: 1.1em;
-      margin-bottom: 35px;
       font-weight: 500;
     }
 
-    /* Botones principales */
+    .btn-container {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
     button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 12px;
+      background-color: #8B0000;
+      color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 1em;
-      color: #fff;
-      background: #8B0000;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
+      transition: 0.3s;
+      width: 100%;
     }
 
     button:hover {
-      background: #a00000;
-      transform: scale(1.03);
+      background-color: #a30000;
+      transform: scale(1.02);
     }
 
-    /* Campos de texto */
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 12px;
-      border: 1px solid #bbb;
-      border-radius: 10px;
-      outline: none;
-      font-size: 0.95em;
-      text-align: center;
-      color: #333;
-      background: rgba(255, 255, 255, 0.7);
-    }
-
-    input::placeholder {
-      color: #777;
-    }
-
-    /* Sección de login (oculta inicialmente) */
-    .hidden {
+    .login-box {
       display: none;
-    }
-
-    .footer {
-      font-size: 0.8em;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 25px;
-      color: #444;
     }
 
-    /* Responsividad */
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .login-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .login-actions button {
+      flex: 1;
+    }
+
     @media (max-width: 480px) {
       .card {
-        width: 85%;
-        padding: 35px 25px;
+        width: 90%;
+        padding: 25px 20px;
       }
-      .title {
-        font-size: 1.9em;
+      .card h1 {
+        font-size: 1.8rem;
+      }
+      .card h2 {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="title">MFD</div>
-    <div class="subtitle">Bienvenido</div>
-
-    <button onclick="showLogin()">Supervisores</button>
-    <button onclick="openReport()">Reporte</button>
-
-    <div id="login" class="hidden">
-      <input type="text" id="user" placeholder="Usuario">
-      <input type="password" id="pass" placeholder="Contraseña">
-      <button onclick="checkLogin()">Ingresar</button>
+  <div class="card" id="mainCard">
+    <h1>MFD</h1>
+    <h2>Bienvenido</h2>
+    <div class="btn-container" id="buttonContainer">
+      <button id="supervisorBtn">Supervisores</button>
+      <button id="reportBtn">Reporte</button>
     </div>
 
-    <div class="footer">© MFD Analítica</div>
+    <div class="login-box" id="loginBox">
+      <input type="text" id="user" placeholder="Usuario" />
+      <input type="password" id="pass" placeholder="Contraseña" />
+      <div class="login-actions">
+        <button id="backBtn">Volver</button>
+        <button id="enterBtn">Ingresar</button>
+      </div>
+    </div>
   </div>
 
   <script>
-    function showLogin() {
-      const login = document.getElementById("login");
-      login.classList.toggle("hidden");
-    }
+    const supervisorBtn = document.getElementById("supervisorBtn");
+    const reportBtn = document.getElementById("reportBtn");
+    const loginBox = document.getElementById("loginBox");
+    const buttonContainer = document.getElementById("buttonContainer");
+    const backBtn = document.getElementById("backBtn");
+    const enterBtn = document.getElementById("enterBtn");
 
-    function checkLogin() {
-      const user = document.getElementById("user").value.trim();
-      const pass = document.getElementById("pass").value.trim();
+    supervisorBtn.addEventListener("click", () => {
+      buttonContainer.style.display = "none";
+      loginBox.style.display = "flex";
+      loginBox.dataset.mode = "supervisor";
+    });
 
-      if (user === "SupervisionMFD" && pass === "AnaliticaMFD") {
-        window.open("https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec", "_blank");
-      } else {
-        alert("Usuario o contraseña incorrectos ❌");
+    reportBtn.addEventListener("click", () => {
+      window.location.href = "https://script.google.com/macros/s/AKfycbx6eFAq7IHjaRC0tBszZviGcfPqsRKnOqza4B5omoth-uAcEuPeRSrI9M4XEPAG7vAdPg/exec";
+    });
+
+    backBtn.addEventListener("click", () => {
+      loginBox.style.display = "none";
+      buttonContainer.style.display = "flex";
+    });
+
+    enterBtn.addEventListener("click", () => {
+      const usuario = document.getElementById("user").value.trim();
+      const password = document.getElementById("pass").value.trim();
+      if (usuario === "" || password === "") {
+        alert("Por favor ingresa usuario y contraseña.");
+        return;
       }
-    }
 
-    function openReport() {
-      window.open("https://script.google.com/macros/s/AKfycbx6eFAq7IHjaRC0tBszZviGcfPqsRKnOqza4B5omoth-uAcEuPeRSrI9M4XEPAG7vAdPg/exec", "_blank");
-    }
+      if (loginBox.dataset.mode === "supervisor") {
+        window.location.href = "https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec";
+      }
+    });
   </script>
 </body>
 </html>
