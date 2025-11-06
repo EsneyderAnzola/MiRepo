@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MFD - Panel de Acceso</title>
   <style>
+    /* ======== FONDO Y BASE ======== */
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
@@ -12,26 +13,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80');
+      background: linear-gradient(135deg, #3b0a0a 0%, #5e0b1f 40%, #000000 100%);
+      background-attachment: fixed;
       background-size: cover;
-      background-position: center;
     }
 
+    /* ======== TARJETA CENTRAL ======== */
     .card {
-      background: rgba(255, 255, 255, 0.70);
+      background: rgba(255, 255, 255, 0.6);
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       width: 90%;
       max-width: 400px;
       text-align: center;
       padding: 40px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       transition: all 0.3s ease;
     }
 
     .card h1 {
       margin: 0;
       font-size: 2.2rem;
-      color: #8B0000; /* Vinotinto */
+      color: #8b0000; /* Vinotinto */
       font-weight: 700;
     }
 
@@ -42,15 +48,17 @@
       font-weight: 500;
     }
 
+    /* ======== BOTONES ======== */
     .btn-container {
       margin-top: 30px;
       display: flex;
       flex-direction: column;
       gap: 15px;
+      width: 100%;
     }
 
     button {
-      background-color: #8B0000;
+      background-color: #8b0000;
       color: white;
       border: none;
       padding: 12px;
@@ -66,11 +74,18 @@
       transform: scale(1.02);
     }
 
+    /* ======== CUADRO DE LOGIN ======== */
     .login-box {
       display: none;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 12px;
       margin-top: 25px;
+      width: 100%;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     input {
@@ -86,12 +101,14 @@
       justify-content: space-between;
       gap: 10px;
       margin-top: 10px;
+      width: 100%;
     }
 
     .login-actions button {
       flex: 1;
     }
 
+    /* ======== RESPONSIVE ======== */
     @media (max-width: 480px) {
       .card {
         width: 90%;
@@ -110,6 +127,7 @@
   <div class="card" id="mainCard">
     <h1>MFD</h1>
     <h2>Bienvenido</h2>
+
     <div class="btn-container" id="buttonContainer">
       <button id="supervisorBtn">Supervisores</button>
       <button id="reportBtn">Reporte</button>
@@ -140,7 +158,8 @@
     });
 
     reportBtn.addEventListener("click", () => {
-      window.location.href = "https://script.google.com/macros/s/AKfycbx6eFAq7IHjaRC0tBszZviGcfPqsRKnOqza4B5omoth-uAcEuPeRSrI9M4XEPAG7vAdPg/exec";
+      window.location.href =
+        "https://script.google.com/macros/s/AKfycbx6eFAq7IHjaRC0tBszZviGcfPqsRKnOqza4B5omoth-uAcEuPeRSrI9M4XEPAG7vAdPg/exec";
     });
 
     backBtn.addEventListener("click", () => {
@@ -157,7 +176,8 @@
       }
 
       if (loginBox.dataset.mode === "supervisor") {
-        window.location.href = "https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec";
+        window.location.href =
+          "https://script.google.com/macros/s/AKfycbyoou0LNdFA7tWEX_FjiKZaBwcNInaCARsQxXJ1dTFR2h5FNryrxutTf6-Vyxr_kc2TfA/exec";
       }
     });
   </script>
